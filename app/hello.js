@@ -58,10 +58,65 @@ da.segment.onstart = function (trigger, args) {
       speechStr = speechObj.SemanticAnalysisResults[0].SpeechRecogResult;
       console.log(speechStr);
 
+      if(speechStr.includes("sony")){
+
+      }
       if(speechStr.includes("jay")){
-        synthesis.speak('Hello Jay', {
+        synthesis.speak('Syncing Jay', {
             onstart: function () {
-                console.log('speak start');
+                console.log('speak onstart');
+                var name = "jay";
+                var xhr = da.getXhr();
+                xhr.open("GET", "http://nodejs.cyrus.me:3000/api/streaming?name="+name, true);
+                xhr.onload = function (e) {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            var audio = new Audio(xhr.responseText);
+                            audio.play();
+                            console.log(xhr.responseText);
+                        } else {
+                            console.error(xhr.statusText);
+                        }
+                    }
+                };
+                xhr.onerror = function (e) {
+                    console.error("failed");
+                    console.error(xhr.statusText);
+                };
+                xhr.send(null);
+            },
+            onend: function () {
+                console.log('speak onend');
+                da.stopSegment();
+            },
+            onerror: function (error) {
+                console.log('speak cancel: ' + error.messsage);
+                da.stopSegment();
+            }
+        });
+      }else if(speechStr.includes("sony")){
+        synthesis.speak('Syncing sony', {
+            onstart: function () {
+                console.log('speak onstart');
+                var name = "david";
+                var xhr = da.getXhr();
+                xhr.open("GET", "http://nodejs.cyrus.me:3000/api/streaming?name="+name, true);
+                xhr.onload = function (e) {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            console.log(xhr.responseText);
+                            var audio = new Audio(xhr.responseText);
+                            audio.play();
+                        } else {
+                            console.error(xhr.statusText);
+                        }
+                    }
+                };
+                xhr.onerror = function (e) {
+                    console.error("failed");
+                    console.error(xhr.statusText);
+                };
+                xhr.send(null);
             },
             onend: function () {
                 console.log('speak onend');
@@ -73,9 +128,28 @@ da.segment.onstart = function (trigger, args) {
             }
         });
       }else if(speechStr.includes("david")){
-        synthesis.speak('Hello david', {
+        synthesis.speak('Syncing david', {
             onstart: function () {
-                console.log('speak start');
+                console.log('speak onstart');
+                var name = "david";
+                var xhr = da.getXhr();
+                xhr.open("GET", "http://nodejs.cyrus.me:3000/api/streaming?name="+name, true);
+                xhr.onload = function (e) {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            console.log(xhr.responseText);
+                            var audio = new Audio(xhr.responseText);
+                            audio.play();
+                        } else {
+                            console.error(xhr.statusText);
+                        }
+                    }
+                };
+                xhr.onerror = function (e) {
+                    console.error("failed");
+                    console.error(xhr.statusText);
+                };
+                xhr.send(null);
             },
             onend: function () {
                 console.log('speak onend');
@@ -86,11 +160,28 @@ da.segment.onstart = function (trigger, args) {
                 da.stopSegment();
             }
         });
+
       }
       else{
-        synthesis.speak('Some random sound!', {
+        synthesis.speak('Syncing', {
             onstart: function () {
-                console.log('speak start');
+                console.log('speak onstart');
+                var xhr = da.getXhr();
+                xhr.open("GET", "http://nodejs.cyrus.me:3000/api/streaming", true);
+                xhr.onload = function (e) {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            console.log(xhr.responseText);
+                        } else {
+                            console.error(xhr.statusText);
+                        }
+                    }
+                };
+                xhr.onerror = function (e) {
+                    console.error("failed");
+                    console.error(xhr.statusText);
+                };
+                xhr.send(null);
             },
             onend: function () {
                 console.log('speak onend');
@@ -104,7 +195,7 @@ da.segment.onstart = function (trigger, args) {
       }
     }
     else{
-      synthesis.speak('Hello!', {
+      synthesis.speak('Syncing', {
           onstart: function () {
               console.log('speak start');
           },
@@ -119,39 +210,38 @@ da.segment.onstart = function (trigger, args) {
       });
     }
 
-
-    var audio = new Audio('http://www.freesound.org/data/previews/59/59569_571436-lq.mp3');
+    var audio = new Audio("http://listen.radionomy.com/abc-lounge");
     audio.play();
 
-    var xhr = da.getXhr();
-    xhr.open("GET", "https://itunes.apple.com/jp/rss/topfreeapplications/limit=1/json", true);
-    xhr.onload = function (e) {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                console.log(xhr.responseText);
-            } else {
-                console.error(xhr.statusText);
-            }
-        }
-    };
-    xhr.onerror = function (e) {
-        console.error(xhr.statusText);
-    };
-    xhr.send(null);
+      var xhr = da.getXhr();
+      xhr.open("GET", "http://nodejs.cyrus.me:3000/api/streaming", true);
+      xhr.onload = function (e) {
+          if (xhr.readyState === 4) {
+              if (xhr.status === 200) {
+                  console.log(xhr.responseText);
+              } else {
+                  console.error(xhr.statusText);
+              }
+          }
+      };
+      xhr.onerror = function (e) {
+          console.error("failed");
+          console.error(xhr.statusText);
+      };
+      xhr.send(null);
 
-/*
-    synthesis.speak('Hello World !Hello World !Hello World !Hello World !Hello World !Hello World !Hello World !Hello World !', {
-        onstart: function () {
-            console.log('speak start');
-        },
-        onend: function () {
-            console.log('speak onend');
-            da.stopSegment();
-        },
-        onerror: function (error) {
-            console.log('speak cancel: ' + error.messsage);
-            da.stopSegment();
-        }
-    });
-    */
+    // var audio = new Audio(xhr.responseText);
+    // audio.play()syncup('defaultStream')eak('Hello World !Hello World !Hello World !Hello World !Hello World !Hello World !Hello World !Hello World !', {
+    //     onstart: function () {
+    //         console.log('speak start');
+    //     },
+    //     onend: function () {
+    //         console.log('speak onend');
+    //         da.stopSegment();
+    //     },
+    //     onerror: function (error) {
+    //         console.log('speak cancel: ' + error.messsage);
+    //         da.stopSegment();
+    //     }
+    // });
 };
