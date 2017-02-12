@@ -1,6 +1,6 @@
 {
   "defaultValues": {
-    "scope": "bi-sound",
+    "scope": "com.bisound",
     "version": "1.0",
     "settings": {}
   }

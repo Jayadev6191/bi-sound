@@ -1,7 +1,7 @@
 {
-  "package": "bi-sound",
+  "package": "com.bisound",
   "manifestVersion": 1,
-  "name": "PlayAudio",
+  "name": "BiSound2",
   "author": {
     "name": "Sony"
   },

@@ -83,6 +83,21 @@ da.segment.onstart = function (trigger, args) {
             }
         });
       }
+      else{
+        synthesis.speak('Some random sound!', {
+            onstart: function () {
+                console.log('speak start');
+            },
+            onend: function () {
+                console.log('speak onend');
+                da.stopSegment();
+            },
+            onerror: function (error) {
+                console.log('speak cancel: ' + error.messsage);
+                da.stopSegment();
+            }
+        });
+      }
     }
     else{
       synthesis.speak('Hello!', {
