@@ -58,8 +58,10 @@ da.segment.onstart = function (trigger, args) {
       speechStr = speechObj.SemanticAnalysisResults[0].SpeechRecogResult;
       console.log(speechStr);
 
-      if(speechStr.includes("sony")){
+//      if(speechStr.includes("sony")){
 
+      if(speechStr.includes("stop")){
+        da.stopSegment();
       }
       if(speechStr.includes("jay")){
         synthesis.speak('Syncing Jay', {
@@ -120,7 +122,7 @@ da.segment.onstart = function (trigger, args) {
             },
             onend: function () {
                 console.log('speak onend');
-                da.stopSegment();
+//                da.stopSegment();
             },
             onerror: function (error) {
                 console.log('speak cancel: ' + error.messsage);
