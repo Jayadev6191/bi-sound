@@ -1,0 +1,11 @@
+{
+  "package": "bi-sound",
+  "manifestVersion": 1,
+  "name": "PlayAudio",
+  "author": {
+    "name": "Sony"
+  },
+  "version": 1,
+  "versionName": "1.0.1",
+  "description": "Bi-sound Play Audio"
+}
