@@ -53,8 +53,12 @@ da.segment.onstart = function (trigger, args) {
     console.log('===================================================================');
     console.log(args);
     console.log('===================================================================');
-    if(args!==undefined){
-      if(args.includes("jay")){
+    if(args!==undefined && args.recognitionSetString !== undefined){
+      speechObj = JSON.parse(args.recognitionSetString);
+      speechStr = speechObj.SemanticAnalysisResults[0].SpeechRecogResult;
+      console.log(speechStr);
+
+      if(speechStr.includes("jay")){
         synthesis.speak('Hello Jay', {
             onstart: function () {
                 console.log('speak start');
@@ -68,8 +72,8 @@ da.segment.onstart = function (trigger, args) {
                 da.stopSegment();
             }
         });
-      }else if(args.includes("ron")){
-        synthesis.speak('Hello ron', {
+      }else if(speechStr.includes("david")){
+        synthesis.speak('Hello david', {
             onstart: function () {
                 console.log('speak start');
             },
