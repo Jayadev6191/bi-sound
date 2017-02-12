@@ -53,34 +53,36 @@ da.segment.onstart = function (trigger, args) {
     console.log('===================================================================');
     console.log(args);
     console.log('===================================================================');
-    if(args.toLowerCase().includes("jay")){
-      synthesis.speak('Hello Jay', {
-          onstart: function () {
-              console.log('speak start');
-          },
-          onend: function () {
-              console.log('speak onend');
-              da.stopSegment();
-          },
-          onerror: function (error) {
-              console.log('speak cancel: ' + error.messsage);
-              da.stopSegment();
-          }
-      });
-    }else if(args.toLowerCase().includes("ron")){
-      synthesis.speak('Hello ron', {
-          onstart: function () {
-              console.log('speak start');
-          },
-          onend: function () {
-              console.log('speak onend');
-              da.stopSegment();
-          },
-          onerror: function (error) {
-              console.log('speak cancel: ' + error.messsage);
-              da.stopSegment();
-          }
-      });
+    if(args!==undefined){
+      if(args.includes("jay")){
+        synthesis.speak('Hello Jay', {
+            onstart: function () {
+                console.log('speak start');
+            },
+            onend: function () {
+                console.log('speak onend');
+                da.stopSegment();
+            },
+            onerror: function (error) {
+                console.log('speak cancel: ' + error.messsage);
+                da.stopSegment();
+            }
+        });
+      }else if(args.includes("ron")){
+        synthesis.speak('Hello ron', {
+            onstart: function () {
+                console.log('speak start');
+            },
+            onend: function () {
+                console.log('speak onend');
+                da.stopSegment();
+            },
+            onerror: function (error) {
+                console.log('speak cancel: ' + error.messsage);
+                da.stopSegment();
+            }
+        });
+      }
     }
     else{
       synthesis.speak('Hello!', {
