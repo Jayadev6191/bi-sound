@@ -89,7 +89,6 @@ da.segment.onstart = function (trigger, args) {
             },
             onend: function () {
                 console.log('speak onend');
-                da.stopSegment();
             },
             onerror: function (error) {
                 console.log('speak cancel: ' + error.messsage);
@@ -122,7 +121,6 @@ da.segment.onstart = function (trigger, args) {
             },
             onend: function () {
                 console.log('speak onend');
-//                da.stopSegment();
             },
             onerror: function (error) {
                 console.log('speak cancel: ' + error.messsage);
@@ -155,7 +153,6 @@ da.segment.onstart = function (trigger, args) {
             },
             onend: function () {
                 console.log('speak onend');
-                da.stopSegment();
             },
             onerror: function (error) {
                 console.log('speak cancel: ' + error.messsage);
@@ -187,7 +184,6 @@ da.segment.onstart = function (trigger, args) {
             },
             onend: function () {
                 console.log('speak onend');
-                da.stopSegment();
             },
             onerror: function (error) {
                 console.log('speak cancel: ' + error.messsage);
@@ -203,7 +199,6 @@ da.segment.onstart = function (trigger, args) {
           },
           onend: function () {
               console.log('speak onend');
-              da.stopSegment();
           },
           onerror: function (error) {
               console.log('speak cancel: ' + error.messsage);
